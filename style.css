@@ -555,7 +555,7 @@ body::before {
     left: 140%;
 }
 
-/* New Portfolio Section Styles (from second HTML) */
+/* New Portfolio Section Styles */
 .portfolio-section-new {
     padding: 8rem 2rem;
     max-width: 1600px;
@@ -612,7 +612,7 @@ body::before {
     opacity: 0.9;
 }
 
-.portfolio-grid-new { /* Renamed for distinction */
+.portfolio-grid-new {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 4rem;
@@ -715,7 +715,7 @@ body::before {
     border-radius: 0 3px 3px 0;
 }
 
-.portfolio-content .portfolio-title { /* Added class for distinction */
+.portfolio-content .portfolio-title {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
     color: var(--light-gold);
@@ -725,11 +725,11 @@ body::before {
     transition: var(--transition);
 }
 
-.portfolio-card:hover .portfolio-content .portfolio-title { /* Added class for distinction */
+.portfolio-card:hover .portfolio-content .portfolio-title {
     text-shadow: var(--gold-glow);
 }
 
-.portfolio-content .portfolio-title::after { /* Added class for distinction */
+.portfolio-content .portfolio-title::after {
     content: "";
     position: absolute;
     bottom: -10px;
@@ -740,7 +740,7 @@ body::before {
     transition: var(--transition);
 }
 
-.portfolio-card:hover .portfolio-content .portfolio-title::after { /* Added class for distinction */
+.portfolio-card:hover .portfolio-content .portfolio-title::after {
     width: 100%;
 }
 
@@ -773,7 +773,7 @@ body::before {
     line-height: 1.8;
 }
 
-.portfolio-btn-new { /* Renamed for distinction */
+.portfolio-btn-new {
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -836,6 +836,107 @@ body::before {
     transform: scaleX(1);
     transform-origin: right;
     transition-delay: 0.3s;
+}
+
+/* Science Proof Button Section */
+.science-proof {
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(rgba(0,0,0,0.95), rgba(0,0,0,0.95)), 
+                url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1470') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    border-top: 1px solid rgba(184, 134, 11, 0.2);
+    border-bottom: 1px solid rgba(184, 134, 11, 0.2);
+}
+
+.science-proof::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0,0,0,0.9) 0%, rgba(184,134,11,0.1) 100%);
+    z-index: 1;
+}
+
+.science-proof-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.science-proof h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, var(--light-gold), var(--gold), var(--dark-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.science-proof p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--light-gray);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.science-proof-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 1.3rem 3.5rem;
+    background: linear-gradient(45deg, var(--gold), var(--dark-gold));
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.science-proof-btn i {
+    margin-right: 15px;
+    font-size: 1.5rem;
+    transition: transform 0.5s ease;
+}
+
+.science-proof-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(184, 134, 11, 0.6), 0 0 25px rgba(184, 134, 11, 0.5);
+}
+
+.science-proof-btn:hover i {
+    transform: rotate(360deg);
+}
+
+.science-proof-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.science-proof-btn:hover::before {
+    left: 100%;
 }
 
 /* Animations */
@@ -959,6 +1060,14 @@ body::before {
     .portfolio-content .portfolio-title {
         font-size: 1.8rem;
     }
+    
+    .science-proof h2 {
+        font-size: 2.3rem;
+    }
+    
+    .science-proof p {
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1008,5 +1117,10 @@ body::before {
     
     .portfolio-content .portfolio-title {
         font-size: 1.6rem;
+    }
+    
+    .science-proof-btn {
+        padding: 1.1rem 2.5rem;
+        font-size: 1rem;
     }
 }
