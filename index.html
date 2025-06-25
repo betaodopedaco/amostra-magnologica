@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
     <section class="hero">
         <div class="hero-content">
@@ -307,6 +308,18 @@
         </div>
     </section>
 
+    <!-- Seção do Botão Adicionada -->
+    <section class="science-proof">
+        <div class="science-proof-content">
+            <h2>A Ciência Por Trás da Excelência</h2>
+            <p>Nossas estratégias são fundamentadas em pesquisas científicas que comprovam a eficácia de cada elemento em nossos projetos. Descubra como a ciência valida nossa abordagem única.</p>
+            <a href="https://betaodopedaco.github.io/ciencia/" target="_blank" class="science-proof-btn">
+                <i class="fas fa-microscope"></i>
+                Veja como a ciência comprova nosso trabalho
+            </a>
+        </div>
+    </section>
+
     <section class="cta">
         <div class="cta-container">
             <h2>Pronto para Transformar Sua Presença Digital?</h2>
@@ -316,5 +329,79 @@
     </section>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script> </body>
+    <script>
+        // Inicializar AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Animação para mostrar os cards quando visíveis
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        portfolioCards.forEach(card => {
+            observer.observe(card);
+        });
+
+        testimonialCards.forEach(card => {
+            card.classList.add('show');
+        });
+
+        // Animação para o slider before/after
+        document.querySelectorAll('.before-after-container').forEach(container => {
+            const handle = container.querySelector('.slider-handle');
+            const afterImage = container.querySelector('.after-image');
+            
+            let isDragging = false;
+            
+            const moveSlider = (e) => {
+                if (!isDragging) return;
+                
+                const containerRect = container.getBoundingClientRect();
+                let position = (e.clientX - containerRect.left) / containerRect.width;
+                position = Math.max(0, Math.min(1, position));
+                
+                afterImage.style.width = `${position * 100}%`;
+                handle.style.left = `${position * 100}%`;
+            };
+            
+            handle.addEventListener('mousedown', () => {
+                isDragging = true;
+                container.style.cursor = 'ew-resize';
+            });
+            
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                container.style.cursor = 'default';
+            });
+            
+            document.addEventListener('mousemove', moveSlider);
+            
+            // Touch events for mobile
+            handle.addEventListener('touchstart', () => {
+                isDragging = true;
+            });
+            
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const touch = e.touches[0];
+                moveSlider(touch);
+            });
+        });
+    </script>
+</body>
 </html>
