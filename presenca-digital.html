@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Presença Digital imbatível para empresas visionárias. Transforme sua marca com design de impacto, performance e autoridade.">
+  <meta name="author" content="Magnológica">
+  <title>Presença Digital | Magnológica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #0c0c0c;
+      --secondary-dark: #111;
+      --accent: #FFD700;
+      --text-light: #ffffff;
+      --text-muted: #777;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #0a0a0a 100%);
+      color: var(--text-light);
+      line-height: 1.8;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 20%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    header {
+      background-color: var(--secondary-dark);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      color: var(--accent);
+      font-size: 1.8rem;
+    }
+
+    .logo h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .logo h1::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: var(--transition);
+    }
+
+    .logo:hover h1::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 5rem auto 4rem;
+      padding: 0 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero h1::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .content-section {
+      max-width: 1000px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: rgba(17, 17, 17, 0.7);
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      border-radius: 16px;
+      padding: 2.5rem;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .card h2::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .card li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      padding-left: 2rem;
+      transition: var(--transition);
+    }
+
+    .card li:last-child {
+      border-bottom: none;
+    }
+
+    .card li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .card li:hover {
+      color: var(--accent);
+      padding-left: 2.5rem;
+    }
+
+    .feature-list li {
+      padding-left: 2.5rem;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--accent);
+    }
+
+    .cta-container {
+      text-align: center;
+      margin: 5rem 0;
+    }
+
+    .cta {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent) 0%, #e6c200 100%);
+      color: #000;
+      padding: 1.2rem 3rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: 0.5s;
+    }
+
+    .cta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+    }
+
+    .cta:hover::before {
+      left: 100%;
+    }
+
+    footer {
+      background-color: var(--secondary-dark);
+      color: var(--text-muted);
+      padding: 4rem 0 2rem;
+      margin-top: 6rem;
+      position: relative;
+      border-top: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      color: var(--accent);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-section h3::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      border-radius: 50%;
+      transition: var(--transition);
+      font-size: 1.2rem;
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      color: #000;
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 3rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      nav {
+        gap: 1.5rem;
+      }
+      
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      .logo {
+        margin-bottom: 1rem;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .hero {
+        margin-top: 3rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    /* Animações */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <i class="fas fa-crown logo-icon"></i>
+      <h1>Magnológica</h1>
+    </div>
+    <nav>
+      <a href="/index.html">Início</a>
+      <a href="/presenca-digital.html">Presença Digital</a>
+      <a href="/para-empresas.html">Para Empresas</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/sobre.html">Sobre</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Presença Digital Imbatível para Empresas Visionárias</h1>
+    <p>Na Magnológica, acreditamos que um site não é apenas uma vitrine digital — é uma arma estratégica. Atuamos com foco absoluto em <strong>autoridade visual</strong>, <strong>design impactante</strong> e <strong>performance real</strong>.</p>
+  </section>
+
+  <section class="content-section">
+    <div class="content-grid">
+      <div class="card">
+        <h2>Nosso diferencial</h2>
+        <p>Criamos experiências digitais que impressionam, prendem atenção e convertem. Utilizamos tecnologias modernas, como 3D, WebGL e microanimações, para dar ao seu negócio a presença que ele merece.</p>
+      </div>
+      
+      <div class="card">
+        <h2>Por que investir em presença digital?</h2>
+        <ul class="feature-list">
+          <li>Aumenta sua percepção de valor no mercado</li>
+          <li>Traz mais clientes certos até você</li>
+          <li>Cria autoridade e confiança imediata</li>
+          <li>Multiplica suas conversões</li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <h2>Serviços focados em performance:</h2>
+        <ul>
+          <li>Criação de sites profissionais (em até 72h)</li>
+          <li>Sites com interatividade e visual avançado</li>
+          <li>Estratégias de SEO e autoridade digital</li>
+          <li>Redesigns impactantes que valorizam sua marca</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-container">
+    <a href="https://wa.me/5581984027098" target="_blank" class="cta">
+      <i class="fab fa-whatsapp"></i> Fale com a Magnológica no WhatsApp
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Magnológica</h3>
+        <p>Transformamos sua presença digital em uma vantagem competitiva inigualável.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-behance"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Links Rápidos</h3>
+        <ul class="footer-links">
+          <li><a href="/index.html">Início</a></li>
+          <li><a href="/presenca-digital.html">Presença Digital</a></li>
+          <li><a href="/para-empresas.html">Para Empresas</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+          <li><a href="/sobre.html">Sobre</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <ul class="footer-links">
+          <li><i class="fas fa-envelope"></i> contato@magnologica.com</li>
+          <li><i class="fas fa-phone"></i> (81) 98402-7098</li>
+          <li><i class="fas fa-map-marker-alt"></i> Recife, PE - Brasil</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>© 2025 Magnológica. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Efeito de scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Efeito de revelação ao rolar
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observar os cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      
+      observer.observe(card);
+      
+      card.classList.add('visible');
+    });
+
+    // Atualizar a classe quando visível
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.card').forEach(card => {
+        if (card.getBoundingClientRect().top < window.innerHeight) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    // Atualizar ao rolar
+    window.addEventListener('scroll', function() {
+      document.querySelectorAll('.card').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
