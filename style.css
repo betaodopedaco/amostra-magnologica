@@ -1084,12 +1084,9 @@ section {
 /* CORREÇÃO PARA O CABEÇALHO SOBREPOR O CONTEÚDO */
 #transformacoes {
     scroll-margin-top: 1000px; /* Ajuste conforme a altura do seu cabeçalho */
-}
 
-.portfolio-section:first-of-type {
-    padding-top: 10px; /* Espaço para o cabeçalho fixo */
-    margin-top: -100px; /* Compensa o padding para manter o alinhamento */
-}
+
+
 
 .portfolio-section:first-of-type::before {
     content: "";
