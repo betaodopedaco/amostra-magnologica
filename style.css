@@ -1098,7 +1098,7 @@ section {
 
 /* CORREÇÃO PARA O CABEÇALHO SOBREPOR O CONTEÚDO */
 #transformacoes {
-    scroll-margin-top: 100px; /* Ajuste conforme a altura do seu cabeçalho */
+    scroll-margin-top: 1000px; /* Ajuste conforme a altura do seu cabeçalho */
 }
 
 .portfolio-section:first-of-type {
