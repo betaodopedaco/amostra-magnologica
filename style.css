@@ -1095,3 +1095,22 @@ section {
         padding: 1.2rem;
     }
 }
+
+/* CORREÇÃO PARA O CABEÇALHO SOBREPOR O CONTEÚDO */
+#transformacoes {
+    scroll-margin-top: 100px; /* Ajuste conforme a altura do seu cabeçalho */
+}
+
+.portfolio-section:first-of-type {
+    padding-top: 100px; /* Espaço para o cabeçalho fixo */
+    margin-top: -100px; /* Compensa o padding para manter o alinhamento */
+}
+
+.portfolio-section:first-of-type::before {
+    content: "";
+    display: block;
+    height: 100px;
+    margin-top: -100px;
+    visibility: hidden;
+    pointer-events: none;
+}
