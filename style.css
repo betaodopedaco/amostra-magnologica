@@ -1102,7 +1102,7 @@ section {
 }
 
 .portfolio-section:first-of-type {
-    padding-top: 100px; /* Espaço para o cabeçalho fixo */
+    padding-top: 10px; /* Espaço para o cabeçalho fixo */
     margin-top: -100px; /* Compensa o padding para manter o alinhamento */
 }
 
