@@ -1,72 +1,119 @@
-// Inicializar AOS
+// Initialize GSAP and ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+// Initialize AOS
 AOS.init({
     duration: 800,
     once: true
 });
 
-// Animação para mostrar os cards quando visíveis
-const portfolioCards = document.querySelectorAll('.portfolio-card');
-const testimonialCards = document.querySelectorAll('.testimonial-card');
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.1 });
-
-portfolioCards.forEach(card => {
-    observer.observe(card);
+// Hero section animations
+gsap.to('.hero-subtitle', {
+    opacity: 1,
+    duration: 1.5,
+    delay: 0.5,
+    ease: "power2.out"
 });
 
-testimonialCards.forEach(card => {
-    card.classList.add('show');
+gsap.to('.hero-title', {
+    opacity: 1,
+    y: 0,
+    duration: 1.5,
+    delay: 0.8,
+    ease: "power3.out"
 });
 
-// Animação para o slider before/after
-document.querySelectorAll('.before-after-container').forEach(container => {
-    const handle = container.querySelector('.slider-handle');
-    const afterImage = container.querySelector('.after-image');
-    
-    let isDragging = false;
-    
-    const moveSlider = (e) => {
-        if (!isDragging) return;
-        
-        const containerRect = container.getBoundingClientRect();
-        let position = (e.clientX - containerRect.left) / containerRect.width;
-        position = Math.max(0, Math.min(1, position));
-        
-        afterImage.style.width = `${position * 100}%`;
-        handle.style.left = `${position * 100}%`;
-    };
-    
-    handle.addEventListener('mousedown', () => {
-        isDragging = true;
-        container.style.cursor = 'ew-resize';
+gsap.to('.hero-text', {
+    opacity: 1,
+    y: 0,
+    duration: 1.5,
+    delay: 1.3,
+    ease: "power3.out"
+});
+
+gsap.to('.hero-buttons', {
+    opacity: 1,
+    y: 0,
+    duration: 1.2,
+    delay: 1.8,
+    ease: "power3.out"
+});
+
+// Scroll-based animations
+gsap.utils.toArray('.reveal').forEach(element => {
+    gsap.fromTo(element, {
+        opacity: 0,
+        y: 50
+    }, {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            end: "bottom 15%",
+            toggleActions: "play none none none"
+        },
+        ease: "power3.out"
+    });
+});
+
+// Card hover animations
+document.querySelectorAll('.portfolio-item, .feature-card, .portfolio-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+            scale: 1.03,
+            boxShadow: "0 15px 40px rgba(0, 0, 0, 0.6)",
+            duration: 0.4,
+            ease: "power2.out"
+        });
     });
     
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-        container.style.cursor = 'default';
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+            scale: 1,
+            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+            duration: 0.4,
+            ease: "power2.out"
+        });
+    });
+});
+
+// Button hover effects
+document.querySelectorAll('.cta-button, .btn, .portfolio-btn, .portfolio-btn-new, .science-proof-btn').forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        gsap.to(button, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: "power2.out"
+        });
     });
     
-    document.addEventListener('mousemove', moveSlider);
-    
-    // Touch events for mobile
-    handle.addEventListener('touchstart', () => {
-        isDragging = true;
+    button.addEventListener('mouseleave', () => {
+        gsap.to(button, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out"
+        });
     });
-    
-    document.addEventListener('touchend', () => {
-        isDragging = false;
-    });
-    
-    document.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const touch = e.touches[0];
-        moveSlider(touch);
+});
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Form submission
+const forms = document.querySelectorAll('form');
+forms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Solicitação enviada com sucesso! Entraremos em contato em breve para oferecer nossa solução premium.');
+        form.reset();
     });
 });
